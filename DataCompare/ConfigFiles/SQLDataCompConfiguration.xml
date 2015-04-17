@@ -1,0 +1,7 @@
+﻿<SQLDataCompConfiguration>
+  <DataQuery>
+    <Source QueryConn="Data Source=datasouraddress;Initial Catalog=DBInstance;User ID=userid;Password=Password" QueryPath="****.sql"/>
+    <Destination QueryConn="Data Source=datasouraddress;Initial Catalog=DBInstance;User ID=userid;Password=Password" QueryPath="****.sql"/>
+  </DataQuery>
+</SQLDataCompConfiguration>
+

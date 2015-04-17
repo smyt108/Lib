@@ -1,0 +1,17 @@
+﻿<ExecConfigurations>
+  <ExecCollection>
+    <Exec Name="Exec1" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" TimeLine="2014-09-24 20:57"/>
+    <Exec Name="Exec2" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" TimeLine="2014-09-24 20:57"/>
+    <Exec Name="Exec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" TimeLine="2014-09-24 20:57"/>
+  </ExecCollection>
+  <DailyExecCollection>
+    <DailyExec Name="DailyExec1" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" DailyTimeLine="21:09"/>
+    <DailyExec Name="DailyExec2" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" DailyTimeLine="21:09"/>
+    <DailyExec Name="DailyExec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" DailyTimeLine="21:09"/>
+  </DailyExecCollection>
+  <IntervalExecCollection>
+    <IntervalExec Name="IntervalExec1" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
+    <IntervalExec Name="IntervalExec2" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
+    <IntervalExec Name="IntervalExec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
+  </IntervalExecCollection>
+</ExecConfigurations>
