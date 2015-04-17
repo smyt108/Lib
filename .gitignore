@@ -44,3 +44,4 @@ Temporary Items
 *.pdb
 */obj
 */bin
+*.suo
