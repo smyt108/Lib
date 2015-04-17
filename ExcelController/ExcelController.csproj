@@ -79,9 +79,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BasicLibrary\BasicLibrary.csproj">
       <Project>{B6D237BD-780D-49A3-8B69-D6971A38922B}</Project>
       <Name>BasicLibrary</Name>

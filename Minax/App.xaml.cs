@@ -18,7 +18,7 @@ namespace Minax
         {
             ExecConfigurationsModel execConfig = ExecConfigReader.GetInstance().GetExecModelByConfig();
 
-            #region Need tobe refined.
+            #region Need to be refined.
 
             foreach (var item in execConfig.ExecCollection)
             {
