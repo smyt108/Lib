@@ -45,3 +45,4 @@ Temporary Items
 */obj
 */bin
 *.suo
+*.user

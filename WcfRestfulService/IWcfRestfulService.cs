@@ -10,7 +10,7 @@ namespace WcfRestfulService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IService1
+    public interface IWcfRestfulService
     {
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
@@ -19,7 +19,7 @@ namespace WcfRestfulService
         Person GetData(string id);
 
         [OperationContract]
-        int Test(string id);
+        int GetId(string id);
 
         // TODO: Add your service operations here
     }

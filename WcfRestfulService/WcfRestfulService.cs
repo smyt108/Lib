@@ -9,7 +9,7 @@ using System.ServiceModel.Web;
 namespace WcfRestfulService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class Service1 : IService1
+    public class WcfRestfulService : IWcfRestfulService
     {
          public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
@@ -32,14 +32,14 @@ namespace WcfRestfulService
             return new Person()
             {
                 Id = Convert.ToInt32(id),
-                Name = "Leo Messi"
+                Name = "Jesse yang"
             };
         }
 
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
-            UriTemplate = "test/{id}")]
-        public int Test(string id)
+            UriTemplate = "GetId/{id}")]
+        public int GetId(string id)
         {
             // lookup person with the requested id 
             return int.Parse(id);
