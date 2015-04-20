@@ -44,6 +44,7 @@
     <Compile Include="DataTableExtension.cs" />
     <Compile Include="DBConnHelper.cs" />
     <Compile Include="FolderExt.cs" />
+    <Compile Include="HttpRequest.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelBase.cs" />
