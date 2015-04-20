@@ -47,6 +47,15 @@ namespace BasicLibrary
             return responseData;
         }
 
+        public string WebGetRequest(string url)
+        {
+            System.Net.WebRequest req = System.Net.WebRequest.Create(url);
+            req.Proxy = new System.Net.WebProxy("", true); //true means no proxy
+            System.Net.WebResponse resp = req.GetResponse();
+            System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
+            return sr.ReadToEnd().Trim();
+        }
+
         public string WebResponseGet(HttpWebRequest webRequest)
         {
             StreamReader responseReader = null;
