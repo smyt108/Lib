@@ -9,7 +9,7 @@ namespace BasicLibrary
 {
     public class HttpRequest
     {
-        public string WebPostRequest(string url, string postData)
+        public string WebPostRequest(string url, string postData, string contentType = "application/xml;charset=utf-8")
         {
             HttpWebRequest webRequest = null;
             StreamWriter requestWriter = null;
@@ -21,8 +21,10 @@ namespace BasicLibrary
             //webRequest.UserAgent  = "Identify your application please.";
             //webRequest.Timeout = 20000;
 
-            webRequest.ContentType = "application/x-www-form-urlencoded";
+            webRequest.ContentType = contentType;
+            //webRequest.ContentType = "application/x-www-form-urlencoded";
             //webRequest.ContentType = "multipart/form-data";
+            //webRequest.ContentType = "application/xml;charset=utf-8"
 
             //POST the data.
             requestWriter = new StreamWriter(webRequest.GetRequestStream());
@@ -56,7 +58,7 @@ namespace BasicLibrary
             return sr.ReadToEnd().Trim();
         }
 
-        public string WebResponseGet(HttpWebRequest webRequest)
+        private string WebResponseGet(HttpWebRequest webRequest)
         {
             StreamReader responseReader = null;
             string responseData = "";
