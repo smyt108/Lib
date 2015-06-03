@@ -42,7 +42,7 @@ namespace Minax
 
         private void addMessage(TaskMessageDataModel message)
         {
-            _uiDispatcher.Invoke(new Action(() =>
+            _uiDispatcher.BeginInvoke(new Action(() =>
             {
                 Messages.Add(new ExecMessageViewModel { TimeStamp = message.Time, SummaryInfo = message.Summary, Status = message.Status,Title=message.Title });
             }));
