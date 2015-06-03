@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCompare", "DataCompare\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelController", "ExcelController\ExcelController.csproj", "{7F5A0E5C-1C82-4F10-A050-6D1A164C9CD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiny", "Minax\Tiny.csproj", "{0C57D367-0AF4-4757-9FCD-394F3198CDFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiny", "Tiny\Tiny.csproj", "{0C57D367-0AF4-4757-9FCD-394F3198CDFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksManager", "TasksManager\TasksManager.csproj", "{84136A3A-B5AF-4353-81C0-020140CF701A}"
 EndProject
