@@ -7,7 +7,7 @@ using System.Windows;
 using TasksManager.DataModel;
 using TasksManager;
 
-namespace Minax
+namespace Tiny
 {
     /// <summary>
     /// Interaction logic for App.xaml

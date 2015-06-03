@@ -10,7 +10,7 @@ using TasksManager.DataModel;
 using System.Threading;
 using System.Windows.Threading;
 
-namespace Minax
+namespace Tiny
 {
     public class MainViewViewModel : NotificationObject
     {

@@ -19,7 +19,7 @@ using System.Drawing.Imaging;
 using TasksManager;
 using TasksManager.DataModel;
 
-namespace Minax
+namespace Tiny
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

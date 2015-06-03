@@ -5,7 +5,7 @@ using System.Text;
 using TasksManager;
 using TasksManager.DataModel;
 
-namespace Minax
+namespace Tiny
 {
     public class ExecManager
     {

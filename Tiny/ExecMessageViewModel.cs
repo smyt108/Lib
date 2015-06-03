@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using TasksManager.DataModel;
 
-namespace Minax
+namespace Tiny
 {
     public class ExecMessageViewModel : NotificationObject
     {
