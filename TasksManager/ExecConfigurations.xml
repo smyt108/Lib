@@ -10,8 +10,8 @@
     <DailyExec Name="DailyExec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" DailyTimeLine="21:09"/>
   </DailyExecCollection>
   <IntervalExecCollection>
-    <IntervalExec Name="IntervalExec1" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
-    <IntervalExec Name="IntervalExec2" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
-    <IntervalExec Name="IntervalExec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="10"/>
+    <IntervalExec Name="IntervalExec1" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="30"/>
+    <IntervalExec Name="IntervalExec2" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="35"/>
+    <IntervalExec Name="IntervalExec3" Path="C:\Program Files\Internet Explorer\iexplore.exe" Arguments="www.baidu.com" Interval="40"/>
   </IntervalExecCollection>
 </ExecConfigurations>

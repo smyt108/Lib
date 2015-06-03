@@ -2,9 +2,31 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" 
-        Height="350" Width="525" 
+        Height="700" Width="1000" 
         StateChanged="Window_StateChanged">
-    <Grid>
+    
+    <Window.Resources>
         
+        <DataTemplate x:Key="m_listBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding TimeStamp}"/>
+                <TextBlock Text="{Binding SummaryInfo}"/>
+                <TextBlock Text="{Binding ProcessId}"/>
+            </StackPanel>
+        </DataTemplate>
+        
+    </Window.Resources>
+    <Grid>
+        <ListView ItemsSource="{Binding Messages}" ItemTemplate="{StaticResource m_listBoxItemTemplate}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date Time" DisplayMemberBinding="{Binding TimeStamp}"></GridViewColumn>
+                    <GridViewColumn Header="Task" DisplayMemberBinding="{Binding Title}"></GridViewColumn>
+                    <GridViewColumn Header="Summary" DisplayMemberBinding="{Binding SummaryInfo}"></GridViewColumn>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}"></GridViewColumn>
+                    <GridViewColumn Header="Process Id" DisplayMemberBinding="{Binding ProcessId}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

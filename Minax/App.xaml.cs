@@ -16,26 +16,6 @@ namespace Minax
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            ExecConfigurationsModel execConfig = ExecConfigReader.GetInstance().GetExecModelByConfig();
-
-            #region Need to be refined.
-
-            foreach (var item in execConfig.ExecCollection)
-            {
-                TimerManager.GetInstance().AddTask(item);
-            }
-
-            foreach (var item in execConfig.DailyExecCollection)
-            {
-                TimerManager.GetInstance().AddTask(item);
-            }
-
-            foreach (var item in execConfig.IntervalExecCollection)
-            {
-                TimerManager.GetInstance().AddTask(item);
-            }
-
-            #endregion
         }
     }
 }

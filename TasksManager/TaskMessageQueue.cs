@@ -10,12 +10,9 @@ namespace TasksManager
 {
     public class TaskMessageQueue : ConcurrentQueue<TaskMessageDataModel>
     {
-        private MessageDispatcher dispatcher;
-
         private static TaskMessageQueue _instance;
         private TaskMessageQueue()
         {
-            dispatcher = new MessageDispatcher();
         }
 
         public static TaskMessageQueue GetInstance()
@@ -31,16 +28,15 @@ namespace TasksManager
         public void AddToQueue(TaskMessageDataModel message)
         {
             //this.Enqueue(message);
-            lock (this)
-            {
-                DispatcherMessage(message);
-            }
+            //lock (this)
+            //{
+            DispatcherMessage(message);
+            //}
         }
 
         private void DispatcherMessage(TaskMessageDataModel message)
         {
-            dispatcher = new MessageDispatcher();
-            dispatcher.Dispatcher(message);
+            MessageDispatcher.GetInstance().Dispatcher(message);
         }
     }
 }

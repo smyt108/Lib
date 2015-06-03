@@ -22,11 +22,11 @@ namespace TasksManager
         {
             IntervalExecInfoModel obj = execInfo as IntervalExecInfoModel;
 
-            ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.Start));
+            ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.Start, "Start to " + obj.Name + ", Path: " + obj.Path + ", Args: " + obj.Arguments));
 
             ExecuteCommand(obj);
 
-            ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.End));
+            ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.End, obj.Name + " End"));
         }
 
         private void ExecuteCommand(IntervalExecInfoModel execInfo)

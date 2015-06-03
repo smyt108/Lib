@@ -7,16 +7,18 @@ namespace TasksManager.DataModel
 {
     public class TaskMessageDataModel
     {
-        public TaskMessageDataModel(string title, DateTime time,TaskBehaviorEnum status)
+        public TaskMessageDataModel(string title, DateTime time,TaskBehaviorEnum status, string summary)
         {
             Title = title;
             Time = time;
             Status = status;
+            Summary = summary;
         }
 
         public string Title { get; set; }
         public DateTime Time { get; set; }
         public TaskBehaviorEnum Status { get; set; }
+        public string Summary { get; set; }
         public string Description { get; set; }
     }
 

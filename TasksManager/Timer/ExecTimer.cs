@@ -26,11 +26,11 @@ namespace TasksManager
 
             if (timeLine == obj.TimeLine)
             {
-                ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.Start));
+                ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.Start, "Start to " + obj.Name + ", Path: " + obj.Path + ", Args: " + obj.Arguments));
 
                 ExecuteCommand(obj);
 
-                ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.End));
+                ReportTask(new TaskMessageDataModel(obj.Name, DateTime.Now, TaskBehaviorEnum.End, obj.Name + " End"));
             }
         }
 

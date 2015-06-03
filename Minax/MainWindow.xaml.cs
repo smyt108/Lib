@@ -32,6 +32,8 @@ namespace Minax
         {
             InitializeComponent();
 
+            MainViewViewModel viewModel = new MainViewViewModel(this.Dispatcher);
+            this.DataContext = viewModel;
             SetIcon();
         }
 
