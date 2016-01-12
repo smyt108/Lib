@@ -1,0 +1,215 @@
+﻿namespace Citi.GSM.ExcelPlugins
+{
+    using System;
+    using Extensibility;
+    using System.Runtime.InteropServices;
+    using Microsoft.Win32;
+    using Excel = Microsoft.Office.Interop.Excel;
+    using System.Collections.Generic;
+    using Microsoft.Office.Interop.Excel;
+
+    #region Read me for Add-in installation and setup information.
+    // When run, the Add-in wizard prepared the registry for the Add-in.
+    // At a later time, if the Add-in becomes unavailable for reasons such as:
+    //   1) You moved this project to a computer other than which is was originally created on.
+    //   2) You chose 'Yes' when presented with a message asking if you wish to remove the Add-in.
+    //   3) Registry corruption.
+    // you will need to re-register the Add-in by building the ExcelPluginsSetup project, 
+    // right click the project in the Solution Explorer, then choose install.
+    #endregion
+
+    /// <summary>
+    ///   The object for implementing an Add-in.
+    /// </summary>
+    /// <seealso class='IDTExtensibility2' />
+    //[Guid("C2B45085-5677-44CD-8EA2-A480A7E34BAA"), ProgId("Citi.GSM.ExcelPlugins.Connect")]
+    public class RegistConfig : Object, Extensibility.IDTExtensibility2
+    {
+        #region Members
+        private Excel.Application excelApplication;
+        private object addInInstance;
+        #endregion
+
+        #region IDTExtensibility2
+        /// <summary>
+        ///		Implements the constructor for the Add-in object.
+        ///		Place your initialization code within this method.
+        /// </summary>
+        public RegistConfig()
+        {
+        }
+
+        /// <summary>
+        ///      Implements the OnConnection method of the IDTExtensibility2 interface.
+        ///      Receives notification that the Add-in is being loaded.
+        /// </summary>
+        /// <param term='application'>
+        ///      Root object of the host application.
+        /// </param>
+        /// <param term='connectMode'>
+        ///      Describes how the Add-in is being loaded.
+        /// </param>
+        /// <param term='addInInst'>
+        ///      Object representing this Add-in.
+        /// </param>
+        /// <seealso class='IDTExtensibility2' />
+        public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)
+        {
+            excelApplication = application as Excel.Application;
+            addInInstance = addInInst;
+        }
+
+        /// <summary>
+        ///     Implements the OnDisconnection method of the IDTExtensibility2 interface.
+        ///     Receives notification that the Add-in is being unloaded.
+        /// </summary>
+        /// <param term='disconnectMode'>
+        ///      Describes how the Add-in is being unloaded.
+        /// </param>
+        /// <param term='custom'>
+        ///      Array of parameters that are host application specific.
+        /// </param>
+        /// <seealso class='IDTExtensibility2' />
+        public void OnDisconnection(Extensibility.ext_DisconnectMode disconnectMode, ref System.Array custom)
+        {
+        }
+
+        /// <summary>
+        ///      Implements the OnAddInsUpdate method of the IDTExtensibility2 interface.
+        ///      Receives notification that the collection of Add-ins has changed.
+        /// </summary>
+        /// <param term='custom'>
+        ///      Array of parameters that are host application specific.
+        /// </param>
+        /// <seealso class='IDTExtensibility2' />
+        public void OnAddInsUpdate(ref System.Array custom)
+        {
+        }
+
+        /// <summary>
+        ///      Implements the OnStartupComplete method of the IDTExtensibility2 interface.
+        ///      Receives notification that the host application has completed loading.
+        /// </summary>
+        /// <param term='custom'>
+        ///      Array of parameters that are host application specific.
+        /// </param>
+        /// <seealso class='IDTExtensibility2' />
+        public void OnStartupComplete(ref System.Array custom)
+        {
+        }
+
+        /// <summary>
+        ///      Implements the OnBeginShutdown method of the IDTExtensibility2 interface.
+        ///      Receives notification that the host application is being unloaded.
+        /// </summary>
+        /// <param term='custom'>
+        ///      Array of parameters that are host application specific.
+        /// </param>
+        /// <seealso class='IDTExtensibility2' />
+        public void OnBeginShutdown(ref System.Array custom)
+        {
+        }
+        
+        #endregion
+
+        #region Formulas
+
+        public string GetInfoByGeids()
+        {
+            DBConnection dbConn = new DBConnection();
+            dbConn.openConn();
+            List<string> geids = new List<string>();
+            Dictionary<string,string> positions = new Dictionary<string,string>();
+            CellsData data = new CellsData();
+            Excel.Range range = (Excel.Range)excelApplication.Selection;
+            foreach (Excel.Range area in range.Areas)
+            {
+                foreach (Excel.Range row in area.Rows)
+                {
+                    geids.Add(row.Text);
+                    positions.Add(row.Text,row.Address);
+                }
+            }
+            List<InfoObject> info = dbConn.searchInfoByGeids(geids);
+            data.insertData(positions, info, excelApplication);
+
+            return geids.ToString();
+            
+        }
+
+        public string GetInfoByGeid()
+        {
+            DBConnection dbConn = new DBConnection();
+            dbConn.openConn();
+            Excel.Range range = (Excel.Range)excelApplication.Selection;
+            InfoObject info = new InfoObject();
+            foreach (Excel.Range area in range.Areas)
+            {
+                foreach (Excel.Range row in area.Rows)
+                {
+                    info = dbConn.searchInfoByGeid(row.Text);
+
+                    //row.Text = info.SoeID;
+                    //range.Cells[1, 2] = info.SoeID;
+                    //range.Cells[1, 3] = info.CName;
+                    //range.Cells[1, 4] = info.EName;
+                }
+            }
+            excelApplication.Cells[1, 3] = info.SoeID;
+            return "";
+
+        }
+
+        #endregion
+
+        #region ComVisible
+        [ComVisible(false)]
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        [ComVisible(false)]
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        [ComVisible(false)]
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        #endregion
+
+        #region Register
+        [ComRegisterFunction]
+        public static void RegisterFunction(Type type)
+        {
+            Registry.ClassesRoot.CreateSubKey(GetSubKeyName(type, /*MSG0*/"Programmable"));
+            var key = Registry.ClassesRoot.OpenSubKey(GetSubKeyName(type, /*MSG0*/"InprocServer32"), true);
+            key.SetValue("", Environment.SystemDirectory + /*MSG0*/@"\mscoree.dll", RegistryValueKind.String);
+
+        }
+
+        [ComUnregisterFunction]
+        public static void UnregisterFunction(Type type)
+        {
+            Registry.ClassesRoot.DeleteSubKey(GetSubKeyName(type, /*MSG0*/"Programmable"), false);
+        }
+
+        private static string GetSubKeyName(Type type, string subKeyName)
+        {
+            var s = new System.Text.StringBuilder();
+            s.Append(/*MSG0*/@"CLSID\{");
+            s.Append(type.GUID.ToString().ToUpper());
+            s.Append(/*MSG0*/@"}\");
+            s.Append(subKeyName);
+            return s.ToString();
+
+        }
+        #endregion
+    }
+
+}
