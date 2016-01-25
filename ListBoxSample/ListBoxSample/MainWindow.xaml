@@ -1,0 +1,33 @@
+﻿<Window x:Class="ListBoxSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:ListBoxSample"
+        xmlns:model="clr-namespace:ListBoxSample" 
+        Title="MainWindow" Height="400" Width="800">
+    
+    <Window.Resources>
+
+        <DataTemplate x:Key="IndicatorModelBaseTemplate" DataType="{x:Type model:IndicatorModelBase}">
+            <TextBox Text="{Binding  IndicatorValue}"/>
+        </DataTemplate>
+
+        <DataTemplate  x:Key="IndicatorTextModelTemplate" DataType="{x:Type model:IndicatorTextModel}">
+            <StackPanel>
+                <TextBlock Text="{Binding Title}"/>
+                <TextBox Text="{Binding IndicatorValue}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate  x:Key="IndictorSelectionModelTemplate" DataType="{x:Type model:IndictorSelectionModel}">
+            <StackPanel>
+                <TextBlock Text="{Binding Title}"/>
+                <ComboBox ItemsSource="{Binding SelectionValues}"/>
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid>
+        <control:SearchListControl x:Name="m_control" Margin="5" SearchListControlItemSource="{Binding }"/>
+    </Grid>
+</Window>
