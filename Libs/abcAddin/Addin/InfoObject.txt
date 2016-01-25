@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Citi.GSM.ExcelPlugins
+{
+    public class InfoObject
+    {
+        private string cName;
+        private string eName;
+        private string soeID;
+        private string geID;
+
+        public InfoObject(InfoObject info) {
+            this.geID = info.GeID;
+            this.cName = info.CName;
+            this.eName = info.EName;
+            this.soeID = info.SoeID;
+	    }
+
+        public InfoObject()
+        {
+            // TODO: Complete member initialization
+        }
+
+        public string CName
+        {
+            get { return cName; }
+            set { cName = value; }
+        }
+        
+        public string EName
+        {
+            get { return eName; }
+            set { eName = value; }
+        }     
+
+        public string SoeID
+        {
+            get { return soeID; }
+            set { soeID = value; }
+        }
+        
+        public string GeID
+        {
+            get { return geID; }
+            set { geID = value; }
+        }
+    }
+}

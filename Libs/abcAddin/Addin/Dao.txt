@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Citi.GSM.ExcelPlugins
+{
+    interface Dao
+    {
+        InfoObject searchInfoByGeid(string geid);
+        string searchCNameByGeid(string geid);
+        string searchENameByGeid(string geid);
+        string searchSoeidByGeid(string geid);
+    }
+}
